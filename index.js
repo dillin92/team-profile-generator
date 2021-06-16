@@ -1,9 +1,5 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-// const occupationData = process.argv.slice(2,process.argv.length);
-const promptEmployee = require("./lib/employee");
-
-
 
 const promptUser = () => {
     
@@ -19,11 +15,21 @@ const promptUser = () => {
             name: "role",
             message: "What is this team member's role in the company?",
             choices: [{value: "Intern"}, {value: "Engineer"},{value:"Manager"}],
-            validate: (value) => {if(value){return promptEmployee()} else {return "Please enter a value to continue"}}
+            validate: (value) => {if(value){return true} else {return "Please enter a value to continue"}}
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "What is the team member's email address?",
+            validate: (value) => {if(value){return true} else {return "Please enter a value to continue"}}
         }
     ])
+   
 };
 
 
 
-promptUser();
+promptUser()
+.then(data => {
+    console.log(data);
+});
