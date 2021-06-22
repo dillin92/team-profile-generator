@@ -62,8 +62,9 @@ const promptUser = () => {
                         let newSchool = data.school;
                         this.intern = new Intern(newName, newId, newEmail, newRole, newSchool);
                         console.log(this.intern);
-                    })
+                    });
                 break;
+                
             case "Engineer":
                 promptEngineer()
                     .then(data => {
@@ -71,7 +72,7 @@ const promptUser = () => {
                         let newGithub = data.github;
                         this.engineer = new Engineer(newName, newId, newEmail, newRole, newGithub);
                         console.log(this.engineer);
-                    })
+                    });
                 break;
 
             case "Manager":
@@ -80,7 +81,7 @@ const promptUser = () => {
                         let newOfficeNumber = data.officeNumber;
                         this.manager = new Manager(newName, newId, newEmail, newRole, newOfficeNumber);
                         console.log(this.manager);
-                    })
+                    });
    
         }
 
