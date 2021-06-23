@@ -1,20 +1,47 @@
+const employeeCards =  [];
 
+const filterRoles = employeeArrayData => {
+  
+  let filteredInterns = employeeArrayData.filter(function(employeeData){ 
+    if(employeeData.getRole() === 'Intern'){
+      return generateInternCard(employeeData).then(internCard => {
+        employeeCards.push(internCard);
+        console.log(employeeCards);
+      });
+  }
+  });
+  let filteredEngineers = employeeArrayData.filter(function(employeeData){ 
+    if(employeeData.getRole() === 'Engineer'){
+      return generateEngineerCard(employeeData).then(engineerCard => {
+        employeeCards.push(engineerCard);
+        console.log(employeeCards);
+      });
+    }
+  });
+  let filteredManagers = employeeArrayData.filter(function(employeeData){ 
+    if(employeeData.getRole() === 'Manager'){
+      return generateManagerCard(employeeData).then(managerCard => {
+        employeeCards.push(managerCard);
+        console.log(employeeCards);
+     });
+    }
+  });
+  console.log(filteredInterns,filteredEngineers, filteredManagers);
+}
 
-const generateCard = employeeCard => {
-    console.log(employeeCard)
+const generateInternCard = internCard => {
         return `
         <div class="card">
             <img src="img_avatar.png" alt="Avatar" style="width:100%">
             <div class="container">
-                ${employeeCard
-                .filter(({ info }) => info)
-                .map(({ name, id, email, role }) => {
-                    console.log(name);
+                ${internCard.map(({name, id, email, role, school}) => {
+                 
                     return `
                     <h4><b>${name}</b></h4>
                     <p>${id}</p>
                     <p>${email}</p>
                     <p>${role}</p>
+                    <p>${school}</p>
 
                 `;
                 })
@@ -22,12 +49,57 @@ const generateCard = employeeCard => {
             </div>
         </div>
         `;
+
+};
+
+const generateEngineerCard = engineerCard => {
+  return `
+  <div class="card">
+      <img src="img_avatar.png" alt="Avatar" style="width:100%">
+      <div class="container">
+          ${engineerCard.map(({ name, id, email, role, github }) => {
+           
+              return `
+              <h4><b>${name}</b></h4>
+              <p>${id}</p>
+              <p>${email}</p>
+              <p>${role}</p>
+              <p>${github}</p>
+
+          `;
+          })
+          .join('')}
+      </div>
+  </div>
+  `;
+};
+
+const generateManagerCard = managerCard => {
+  return `
+  <div class="card">
+      <img src="img_avatar.png" alt="Avatar" style="width:100%">
+      <div class="container">
+          ${managerCard.map(({ name, id, email, role, officeNumber }) => {
+           
+              return `
+              <h4><b>${name}</b></h4>
+              <p>${id}</p>
+              <p>${email}</p>
+              <p>${role}</p>
+              <p>${officeNumber}</p>
+
+          `;
+          })
+          .join('')}
+      </div>
+  </div>
+  `;
 };
 
 // export function to generate entire page
 module.exports = templateData => {
-    // destructure page data by section
-    const employeeCard = templateData;
+  console.log(templateData)
+ 
   
     return `
     <!DOCTYPE html>
@@ -42,6 +114,8 @@ module.exports = templateData => {
       <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="style.css">
     </head>
+      ${filterRoles(templateData)}
+    
     
     <body>
       <header>
@@ -53,7 +127,8 @@ module.exports = templateData => {
         </div>
       </header>
       <main class="container">
-        ${generateCard(employeeCard)}
+        
+
       </main>
       <footer class="container text-center py-3">
         <h3 class="text-dark">&copy;2020 by Dillin Helsley</h3>
