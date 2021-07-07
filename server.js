@@ -23,13 +23,7 @@ const initApp = () =>{
         message: 'Do you want to add an employee?',
         choices: ['Yes', 'No']
         }
-    ]).then(data => {
-        if(data.start === 'Yes'){
-            return promptUser();
-        } else {
-            generatePage(employees);
-        }
-    })
+    ])
 }
 //User Prompt
 const promptUser = () => {
@@ -157,49 +151,21 @@ function promptManager() {
     ])
 };
 
-initApp();
-//     .then(employeeData => {
-//         return generatePage(employeeData);
-// })
-// .then(pageHTML => {
-//     return writeFile(pageHTML);
-// });
-// .then(data => {
-
-//     switch(data.role) {
-//     case "Intern":
-//         promptIntern()
-//         .then(data => {
-//             console.log(data)
-//         })
-//         break;
-//     case "Engineer":
-//         promptEngineer()
-//         .then(data => {
-//             console.log(data)
-//         })
-//         break;
-
-//     case "Manager":
-//         promptManager()
-//         .then(data => {
-//             console.log(data)
-//         })
-//         break;
-//     }
+initApp()
+.then(data => {
+    if(data.start === 'Yes'){
+        return promptUser();
+    } else {
+        generatePage(employees);
+    }
+})
+.then(employeeData => {
+        return generatePage(employeeData);
+})
+.then(pageHTML => {
+    return writeFile(pageHTML);
+});
 
 
-// });
-// .then(pageHTML => {
-//     return writeFile(pageHTML);
-// })
-// .then(writeFileResponse => {
-//     console.log(writeFileResponse)
-//     return copyFile();
-// })
-// .then(copyFileResponse => {
-//     console.log(copyFileResponse);
-// })
-// .catch(err => {
-//     console.log(err);
-// });
+
+

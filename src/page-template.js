@@ -34,7 +34,7 @@ const generateInternCard = internCard => {
         <div class="card">
             <img src="img_avatar.png" alt="Avatar" style="width:100%">
             <div class="container">
-                ${internCard.map(({name, id, email, role, school}) => {
+                ${internCard.filter(({ info }) => info).map(({name, id, email, role, school}) => {
                  
                     return `
                     <h4><b>${name}</b></h4>
@@ -45,7 +45,7 @@ const generateInternCard = internCard => {
 
                 `;
                 })
-                .join('')}
+                }
             </div>
         </div>
         `;
