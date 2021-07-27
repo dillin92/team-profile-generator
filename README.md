@@ -16,7 +16,7 @@ Clone the code, run npm start in your terminal, answer the prompts until you are
 
 ## Walkthrough Video
 
-[walkthrough video](https://drive.google.com/file/d/1aYwh56XqQkvU5UOzB2HcdrRNaXaC8ZpQ/preview)
+[walkthrough video](https://drive.google.com/file/d/1aYwh56XqQkvU5UOzB2HcdrRNaXaC8ZpQ/view)
 
 ## Testing the application
 
