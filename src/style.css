@@ -2,15 +2,54 @@
   box-sizing: border-box;
   margin: 0;
 }
+main {
+  text-align: center;
+  margin: 20px;
+}
 
 .employee {
   border: solid black 2px;
   margin: 20px;
-  height: 75px;
-  width: 100px;
+  height: 200px;
+  width: 250px;
+  padding: 20px;
+  background-color: steelblue;
+  margin-left: 100px;
+}
+
+.employee h4 {
+  text-align: center;
+  color: white;
+}
+
+.employee p {
+  border: solid grey 1px;
+  background-color: white;
+  border-radius: 10%;
 }
 
 header {
   background-color: steelblue;
   text-align: center;
+}
+
+.team {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.interns {
+  background-color: springgreen;
+  width: 33%;
+}
+
+.engineers {
+  background-color: silver;
+  width: 33%;
+}
+
+.managers {
+  background-color: salmon;
+  width: 33%;
 }
