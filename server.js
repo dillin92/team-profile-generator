@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const generatePage = require('./src/page-template');
+const  generatePage  = require('./src/page-template');
 const { writeFile, copyFile } = require('./utils/generate-site');
 const Employee = require('./lib/employee');
 const Intern = require('./lib/intern');
@@ -7,12 +7,7 @@ const Engineer = require('./lib/engineer');
 const Manager = require('./lib/manager');
 let employees = [];
 
-class Team {
-    constructor() {
-        this.employees = [];
-        this.employee;
-    }
-}
+
 
 // initialize app
 const initApp = () =>{
@@ -23,7 +18,15 @@ const initApp = () =>{
         message: 'Do you want to add an employee?',
         choices: ['Yes', 'No']
         }
-    ])
+    ]).then(data => {
+        if(data.start === 'Yes'){
+            return promptUser();
+        } else {
+             let pageHTML =  generatePage(employees);
+             writeFile(pageHTML);
+             copyFile();
+        }
+    })
 }
 //User Prompt
 const promptUser = () => {
@@ -74,9 +77,9 @@ const promptUser = () => {
 
                         let newSchool = data.school;
                         let intern = new Intern(newName, newId, newEmail, newRole, newSchool);
-                        console.log(intern);
+                  
                         employees.push(intern);
-                        console.log(employees);
+            
                         initApp();
                     })
                 break;
@@ -87,9 +90,9 @@ const promptUser = () => {
 
                         let newGithub = data.github;
                         let engineer = new Engineer(newName, newId, newEmail, newRole, newGithub);
-                        console.log(engineer);
+              
                         employees.push(engineer);
-                        console.log(employees);
+                 
                         initApp();
                     });
                 break;
@@ -99,9 +102,7 @@ const promptUser = () => {
                     .then(data => {
                         let newOfficeNumber = data.office_number;
                         let manager = new Manager(newName, newId, newEmail, newRole, newOfficeNumber);
-                        console.log(manager);
                         employees.push(manager);
-                        console.log(employees);
                         initApp();
                     })
 
@@ -126,6 +127,7 @@ function promptIntern() {
             validate: (value) => { if (value) { return true } else { return "Please enter a value to continue" } }
         }]);
 
+        return initApp();
 };
 
 function promptEngineer() {
@@ -151,21 +153,7 @@ function promptManager() {
     ])
 };
 
-initApp()
-.then(data => {
-    if(data.start === 'Yes'){
-        return promptUser();
-    } else {
-        generatePage(employees);
-    }
-})
-.then(employeeData => {
-        return generatePage(employeeData);
-})
-.then(pageHTML => {
-    return writeFile(pageHTML);
-});
-
+initApp();
 
 
 
