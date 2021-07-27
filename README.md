@@ -12,13 +12,15 @@ by cloning the code from the repository(link below) and once cloned running npm 
 
 Clone the code, run npm start in your terminal, answer the prompts until you are done building your team. Once done simply click no when prompted "Do you want to add an employee?". The application will then generated a newly created team page containing the information obtained from your answers in the prompt.
 
-## Contribution Guidlines
+![Screenshot (41)](https://user-images.githubusercontent.com/80184962/127090766-160ef4e2-e693-4aa8-99fd-039a8fdd02c6.png)
 
---
+## Walkthrough Video
+
+[walkthrough video](https://drive.google.com/file/d/1aYwh56XqQkvU5UOzB2HcdrRNaXaC8ZpQ/preview)
 
 ## Testing the application
 
-Their are jest tests in the _test_ folder and jest is installed. Run npm test
+Their are jest tests in the _test_ folder and jest is installed. Run npm test in the terminal to run the test suites.
 
 ## Questions
 
